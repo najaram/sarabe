@@ -25,8 +25,11 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('members', 'MembersController@index')->name('members');
     Route::get('members/{member}', 'MembersController@show')->name('members.show');
     Route::post('members', 'MembersController@store')->name('members.store');
+    Route::put('members/{member}', 'MembersController@update')->name('members.update');
 
     // Members Profile...
     Route::get('members/{member}/profile', 'MemberProfilesController@show')->name('members.profiles.show');
+    Route::post('members/{member}/profile', 'MemberProfilesController@store')->name('members.profiles.store');
+    Route::put('members/{member}/profile/{profile}', 'MemberProfilesController@update')->name('members.profiles.update');
 
 });

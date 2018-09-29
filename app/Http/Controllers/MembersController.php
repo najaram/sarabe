@@ -3,10 +3,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MembersRequest;
+use App\Http\Requests\CreateMemberRequest;
+use App\Http\Requests\UpdateMemberRequest;
 use App\Http\Resources\MembersResource;
 use App\Member;
-use Illuminate\Http\Request;
 
 class MembersController extends Controller
 {
@@ -34,10 +34,10 @@ class MembersController extends Controller
     /**
      * Create a new member.
      *
-     * @param MembersRequest $request
+     * @param CreateMemberRequest $request
      * @return MembersResource
      */
-    public function store(MembersRequest $request)
+    public function store(CreateMemberRequest $request)
     {
         $member = Member::create([
             'first_name' => $request->get('first_name'),
@@ -48,6 +48,25 @@ class MembersController extends Controller
         ]);
 
         return MembersResource::make($member);
+    }
 
+    /**
+     * Update a member.
+     *
+     * @param UpdateMemberRequest $request
+     * @param Member $member
+     * @return MembersResource
+     */
+    public function update(UpdateMemberRequest $request, Member $member)
+    {
+        $member->update([
+            'first_name' => $request->get('first_name'),
+            'last_name'  => $request->get('last_name'),
+            'birthday'   => $request->get('birthday'),
+            'phone'      => $request->get('phone'),
+            'address'    => $request->get('address')
+        ]);
+
+        return MembersResource::make($member);
     }
 }
