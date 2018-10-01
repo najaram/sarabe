@@ -26,16 +26,19 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('members/{member}', 'MembersController@show')->name('members.show');
     Route::post('members', 'MembersController@store')->name('members.store');
     Route::put('members/{member}', 'MembersController@update')->name('members.update');
+    Route::delete('members/{member}', 'MembersController@destroy')->name('members.destroy');
 
     // Members Profile...
     Route::get('members/{member}/profile', 'MemberProfilesController@show')->name('members.profiles.show');
     Route::post('members/{member}/profile', 'MemberProfilesController@store')->name('members.profiles.store');
     Route::put('members/{member}/profile/{profile}', 'MemberProfilesController@update')->name('members.profiles.update');
+    Route::delete('members/{member}/profile/{profile}', 'MemberProfilesController@destroy')->name('members.profiles.destroy');
 
     // Services...
     Route::get('services', 'ServicesController@index')->name('services.index');
     Route::get('services/{service}', 'ServicesController@show')->name('services.show');
     Route::get('services/{service}/edit', 'ServicesController@edit')->name('services.edit');
     Route::put('services/{service}', 'ServicesController@update')->name('services.update');
+    Route::delete('services/{service}', 'ServicesController@destroy')->name('services.destroy');
 
 });

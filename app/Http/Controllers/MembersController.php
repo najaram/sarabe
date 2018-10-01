@@ -69,4 +69,18 @@ class MembersController extends Controller
 
         return MemberResource::make($member);
     }
+
+    /**
+     * Delete a member.
+     *
+     * @param Member $member
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @throws \Exception
+     */
+    public function destroy(Member $member)
+    {
+        $member->delete();
+
+        return response(null, 204);
+    }
 }

@@ -64,4 +64,18 @@ class MemberProfilesController extends Controller
 
         return ProfileResource::make($profile);
     }
+
+    /**
+     * Delete a member profile.
+     *
+     * @param Member $member
+     * @param Profile $profile
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function destroy(Member $member, Profile $profile)
+    {
+        $member->profile()->delete();
+
+        return response(null, 204);
+    }
 }

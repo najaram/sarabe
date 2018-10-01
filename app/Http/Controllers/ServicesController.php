@@ -62,4 +62,18 @@ class ServicesController extends Controller
 
         return ServiceResource::make($service);
     }
+
+    /**
+     * Delete a task
+     *
+     * @param Service $service
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @throws \Exception
+     */
+    public function destroy(Service $service)
+    {
+        $service->delete();
+
+        return response(null, 204);
+    }
 }
