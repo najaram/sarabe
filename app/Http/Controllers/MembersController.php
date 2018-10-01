@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
-use App\Http\Resources\MembersResource;
+use App\Http\Resources\MemberResource;
 use App\Member;
 
 class MembersController extends Controller
@@ -17,25 +17,25 @@ class MembersController extends Controller
      */
     public function index()
     {
-        return MembersResource::collection(Member::paginate());
+        return MemberResource::collection(Member::paginate());
     }
 
     /**
      * Get the specified member.
      *
      * @param Member $member
-     * @return MembersResource
+     * @return MemberResource
      */
     public function show(Member $member)
     {
-        return MembersResource::make($member);
+        return MemberResource::make($member);
     }
 
     /**
      * Create a new member.
      *
      * @param CreateMemberRequest $request
-     * @return MembersResource
+     * @return MemberResource
      */
     public function store(CreateMemberRequest $request)
     {
@@ -47,7 +47,7 @@ class MembersController extends Controller
             'address'    => $request->get('address'),
         ]);
 
-        return MembersResource::make($member);
+        return MemberResource::make($member);
     }
 
     /**
@@ -55,7 +55,7 @@ class MembersController extends Controller
      *
      * @param UpdateMemberRequest $request
      * @param Member $member
-     * @return MembersResource
+     * @return MemberResource
      */
     public function update(UpdateMemberRequest $request, Member $member)
     {
@@ -67,6 +67,6 @@ class MembersController extends Controller
             'address'    => $request->get('address')
         ]);
 
-        return MembersResource::make($member);
+        return MemberResource::make($member);
     }
 }

@@ -32,4 +32,10 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::post('members/{member}/profile', 'MemberProfilesController@store')->name('members.profiles.store');
     Route::put('members/{member}/profile/{profile}', 'MemberProfilesController@update')->name('members.profiles.update');
 
+    // Services...
+    Route::get('services', 'ServicesController@index')->name('services.index');
+    Route::get('services/{service}', 'ServicesController@show')->name('services.show');
+    Route::get('services/{service}/edit', 'ServicesController@edit')->name('services.edit');
+    Route::put('services/{service}', 'ServicesController@update')->name('services.update');
+
 });
