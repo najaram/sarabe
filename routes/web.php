@@ -36,6 +36,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     // Services...
     Route::get('services', 'ServicesController@index')->name('services.index');
+    Route::post('services', 'ServicesController@store')->name('services.store');
     Route::get('services/{service}', 'ServicesController@show')->name('services.show');
     Route::get('services/{service}/edit', 'ServicesController@edit')->name('services.edit');
     Route::put('services/{service}', 'ServicesController@update')->name('services.update');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Http\Resources\ServiceResource;
 use App\Service;
@@ -17,6 +18,23 @@ class ServicesController extends Controller
     public function index()
     {
         return ServiceResource::collection(Service::paginate());
+    }
+
+    /**
+     * Create a service.
+     *
+     * @param CreateServiceRequest $request
+     * @return ServiceResource
+     */
+    public function store(CreateServiceRequest $request)
+    {
+        $service = $request->user()->services()->create([
+            'title'    => $request->get('title'),
+            'schedule' => $request->get('schedule'),
+            'note'     => $request->get('note')
+        ]);
+
+        return ServiceResource::make($service);
     }
 
     /**
