@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\Service\ServiceCreated;
 use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
@@ -11,5 +12,9 @@ class Service extends Model
         'title',
         'schedule',
         'note'
+    ];
+
+    protected $dispatchesEvents = [
+        'created' => ServiceCreated::class
     ];
 }

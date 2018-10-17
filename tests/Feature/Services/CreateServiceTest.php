@@ -2,14 +2,26 @@
 
 namespace Tests\Feature\Services;
 
+use App\Events\Service\ServiceCreated;
+use App\Service;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class CreateServiceTest extends TestCase
 {
     use DatabaseMigrations;
+
+    public function validParams($params = [])
+    {
+        return array_merge([
+            'title' => 'An example title',
+            'schedule' => Carbon::now(),
+            'note' => 'An example note'
+        ], $params);
+    }
 
     /** @test */
     public function user_can_create_a_service()
@@ -64,5 +76,22 @@ class CreateServiceTest extends TestCase
 
         $response->assertStatus(302);
         $response->assertSessionHasErrors('user_id');
+    }
+
+    /** @test */
+    public function event_is_fired_when_a_service_is_created()
+    {
+        Event::fake([ServiceCreated::class]);
+        $service = factory(Service::class)->create();
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user)
+            ->post('services', $this->validParams([
+                'user_id' => $user->id
+            ]));
+
+        Event::assertDispatched(ServiceCreated::class, function ($event) use ($service) {
+            return $event->service->id == $service->id;
+        });
     }
 }

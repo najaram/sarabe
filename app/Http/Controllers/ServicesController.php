@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Event\Service\ServiceCreated;
 use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Http\Resources\ServiceResource;
 use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServicesController extends Controller
 {
@@ -33,6 +35,8 @@ class ServicesController extends Controller
             'schedule' => $request->get('schedule'),
             'note'     => $request->get('note')
         ]);
+
+        ServiceCreated::dispatch($service, Auth::user());
 
         return ServiceResource::make($service);
     }
