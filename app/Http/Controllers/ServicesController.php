@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Event\Service\ServiceCreated;
+use App\Events\Service\ServiceCreated;
 use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Http\Resources\ServiceResource;
