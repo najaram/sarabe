@@ -90,7 +90,7 @@ class CreateServiceTest extends TestCase
                 'user_id' => $user->id
             ]));
 
-        Event::assertDispatched(ServiceCreated::class, function ($event) use ($service) {
+        Event::assertDispatched(ServiceCreated::class, function ($event) use ($service, $user) {
             return $event->service->id == $service->id;
         });
     }
