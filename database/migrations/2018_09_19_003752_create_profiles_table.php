@@ -15,7 +15,7 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('member_id');
+            $table->unsignedInteger('member_id')->index();
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
             $table->string('church_id');
             $table->string('locale');

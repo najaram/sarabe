@@ -21,6 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['web', 'auth'])->group(function () {
 
+    // Activity
+    Route::get('activities', 'ActivityController@index')->name('activities');
+
     // Members...
     Route::get('members', 'MembersController@index')->name('members');
     Route::get('members/{member}', 'MembersController@show')->name('members.show');

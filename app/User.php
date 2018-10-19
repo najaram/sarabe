@@ -39,8 +39,23 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($password);
     }
 
+    /**
+     * Has many services.
+     *
+     * @return HasMany
+     */
     public function services(): HasMany
     {
         return $this->hasMany(Service::class);
+    }
+
+    /**
+     * Has many activities.
+     *
+     * @return HasMany
+     */
+    public function activities(): HasMany
+    {
+        return $this->hasMany(Activity::class);
     }
 }
