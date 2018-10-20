@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Http\Requests\CreateActivityRequest;
 use App\Http\Resources\ActivityResource;
+use Illuminate\Support\Facades\Auth;
 
 class ActivityController extends Controller
 {
@@ -15,5 +17,38 @@ class ActivityController extends Controller
     public function index()
     {
         return ActivityResource::collection(Activity::paginate());
+    }
+
+    /**
+     * Get an activity.
+     *
+     * @param Activity $activity
+     *
+     * @return ActivityResource
+     */
+    public function show(Activity $activity)
+    {
+        $activity = Activity::find($activity->id);
+
+        return ActivityResource::make($activity);
+    }
+
+    /**
+     * Create an activity.
+     *
+     * @param CreateActivityRequest $request
+     *
+     * @return ActivityResource
+     */
+    public function store(CreateActivityRequest $request)
+    {
+        $activity = Activity::create([
+            'user_id'  => Auth::id(),
+            'title'    => $request->get('title'),
+            'schedule' => $request->get('schedule'),
+            'content'  => $request->get('content')
+        ]);
+
+        return ActivityResource::make($activity);
     }
 }

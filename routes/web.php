@@ -23,6 +23,8 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     // Activity
     Route::get('activities', 'ActivityController@index')->name('activities');
+    Route::get('activities/{activity}', 'ActivityController@show')->name('activities.show');
+    Route::post('activities', 'ActivityController@store')->name('activities.store');
 
     // Members...
     Route::get('members', 'MembersController@index')->name('members');
