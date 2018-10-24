@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\Http\Requests\CreateActivityRequest;
+use App\Http\Requests\UpdateActivityRequest;
 use App\Http\Resources\ActivityResource;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,6 +44,25 @@ class ActivityController extends Controller
     public function store(CreateActivityRequest $request)
     {
         $activity = Activity::create([
+            'user_id'  => Auth::id(),
+            'title'    => $request->get('title'),
+            'schedule' => $request->get('schedule'),
+            'content'  => $request->get('content')
+        ]);
+
+        return ActivityResource::make($activity);
+    }
+
+    /**
+     * Update activity.
+     *
+     * @param UpdateActivityRequest $request
+     * @param Activity $activity
+     * @return ActivityResource
+     */
+    public function update(UpdateActivityRequest $request, Activity $activity)
+    {
+        $activity->update([
             'user_id'  => Auth::id(),
             'title'    => $request->get('title'),
             'schedule' => $request->get('schedule'),

@@ -16,7 +16,7 @@ class ActivityResource extends JsonResource
     {
         return [
             'title'    => $this->title,
-            'schedule' => $this->schedule,
+            'schedule' => $this->formatted_schedule,
             'content'  => $this->content
         ];
     }

@@ -15,4 +15,17 @@ class Activity extends Model
         'schedule',
         'content'
     ];
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $dates = ['schedule'];
+
+    /**
+     * Get the formatted schedule.
+     */
+    public function getFormattedScheduleAttribute()
+    {
+        return $this->schedule->format('F j, Y');
+    }
 }
