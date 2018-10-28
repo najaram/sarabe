@@ -71,4 +71,18 @@ class ActivityController extends Controller
 
         return ActivityResource::make($activity);
     }
+
+    /**
+     * Delete an activity.
+     *
+     * @param Activity $activity
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @throws \Exception
+     */
+    public function destroy(Activity $activity)
+    {
+        $activity->delete();
+
+        return response(null, 204);
+    }
 }

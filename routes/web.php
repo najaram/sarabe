@@ -26,6 +26,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('activities/{activity}', 'ActivityController@show')->name('activities.show');
     Route::post('activities', 'ActivityController@store')->name('activities.store');
     Route::put('activities/{activity}', 'ActivityController@update')->name('activities.update');
+    Route::delete('activities/{activity}', 'ActivityController@destroy')->name('activities.destroy');
 
     // Members...
     Route::get('members', 'MembersController@index')->name('members');

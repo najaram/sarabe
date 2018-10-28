@@ -16,7 +16,7 @@ class CreateActivityTest extends TestCase
     {
         return array_merge([
             'title'    => 'Example title',
-            'schedule' => Carbon::now(),
+            'schedule' => Carbon::parse('2018-11-25'),
             'content'  => 'Example content'
         ], $params);
     }
@@ -26,19 +26,21 @@ class CreateActivityTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $this->assertEquals(0, $user->activities()->count());
-
         $response = $this->actingAs($user)
             ->post('/activities', [
                 'user_id'  => $user->id,
                 'title'    => 'Example title',
-                'schedule' => Carbon::now(),
+                'schedule' => Carbon::parse('2018-11-25'),
                 'content'  => 'Example content'
             ]);
 
         $response->assertStatus(201);
-        $response->assertJsonFragment([
-            'title' => 'Example title',
+        $response->assertJson([
+            'data' => [
+                'title'    => 'Example title',
+                'schedule' => 'November 25, 2018',
+                'content'  => 'Example content'
+            ]
         ]);
         tap(Activity::latest('id')->first(), function ($activity) use ($response) {
             $this->assertEquals('Example title', $activity->title);
