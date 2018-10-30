@@ -1,16 +1,15 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
 
-window.Vue = require('vue');
+window.Vue = require("vue");
 
-import Vuetify from 'vuetify';
-import 'vuetify/dist/vuetify.min.css'
+import Vuetify from "vuetify";
+import "vuetify/dist/vuetify.min.css";
 
 Vue.use(Vuetify);
 /**
@@ -19,21 +18,32 @@ Vue.use(Vuetify);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component(
+    "example-component",
+    require("./components/ExampleComponent.vue")
+);
+Vue.component(
+    "dashboard-page",
+    require("./components/Dashboard/Dashboard.vue")
+);
+Vue.component(
+    "dashboard-count",
+    require("./components/Dashboard/DashboardCount.vue")
+);
 
-const admin = new Vue({
-    el: '#admin',
-    data: () => ({
-        drawer: null
-    }),
+new Vue({
+    el: "#admin",
     props: {
         source: String
     },
+    data: () => ({
+        drawer: null
+    }),
     methods: {
         logout(logoutUrl, url) {
-            axios.post(logoutUrl).then(()=>{
-                window.location.href = url
+            axios.post(logoutUrl).then(() => {
+                window.location.href = url;
             });
-        },
+        }
     }
 });

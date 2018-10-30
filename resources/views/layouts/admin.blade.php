@@ -36,24 +36,13 @@
             </v-navigation-drawer>
                 @include('layouts.header')
             <v-content>
-                <v-container fluid fill-height>
+                <v-container fluid>
                     <v-layout
                             justify-center
                             align-center
                     >
                         <v-flex text-xs-center>
-                            <v-tooltip left>
-                                <v-btn slot="activator" :href="source" icon large target="_blank">
-                                    <v-icon large>code</v-icon>
-                                </v-btn>
-                                <span>Source</span>
-                            </v-tooltip>
-                            <v-tooltip right>
-                                <v-btn slot="activator" icon large href="https://codepen.io/johnjleider/pen/rJdVMq" target="_blank">
-                                    <v-icon large>mdi-codepen</v-icon>
-                                </v-btn>
-                                <span>Codepen</span>
-                            </v-tooltip>
+                            @yield('content')
                         </v-flex>
                     </v-layout>
                 </v-container>

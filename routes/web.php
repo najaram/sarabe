@@ -21,13 +21,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['web', 'auth'])->group(function () {
 
-    // Activity
+    // Activity...
     Route::get('activities', 'ActivityController@index')->name('activities');
     Route::get('activities/{activity}', 'ActivityController@show')->name('activities.show');
     Route::post('activities', 'ActivityController@store')->name('activities.store');
     Route::put('activities/{activity}', 'ActivityController@update')->name('activities.update');
     Route::delete('activities/{activity}', 'ActivityController@destroy')->name('activities.destroy');
 
+    // Dashboard...
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     // Members...
     Route::get('members', 'MembersController@index')->name('members');
     Route::get('members/{member}', 'MembersController@show')->name('members.show');
