@@ -43,6 +43,8 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::put('members/{member}/profile/{profile}', 'MemberProfilesController@update')->name('members.profiles.update');
     Route::delete('members/{member}/profile/{profile}', 'MemberProfilesController@destroy')->name('members.profiles.destroy');
 
+    Route::get('news-api', 'NewsController@newsApi')->name('news.api');
+
     // Services...
     Route::get('services', 'ServicesController@index')->name('services.index');
     Route::post('services', 'ServicesController@store')->name('services.store');

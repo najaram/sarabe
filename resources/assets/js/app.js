@@ -19,16 +19,16 @@ Vue.use(Vuetify);
  */
 
 Vue.component(
-    "example-component",
-    require("./components/ExampleComponent.vue")
-);
-Vue.component(
-    "dashboard-page",
-    require("./components/Dashboard/Dashboard.vue")
-);
-Vue.component(
     "dashboard-count",
     require("./components/Dashboard/DashboardCount.vue")
+);
+Vue.component(
+    "dashboard-count-page",
+    require("./components/Dashboard/DashboardCountPage.vue")
+);
+Vue.component(
+    "dashboard-news",
+    require("./components/Dashboard/DashboardNews.vue")
 );
 
 new Vue({
