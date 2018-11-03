@@ -19,7 +19,7 @@ class NewsApi implements NewsContract
     {
         $client = new Client(['base_uri' => $this->baseUri]);
 
-        $response = $client->request('GET', $path . '&apiKey=' . env('NEWS_API_KEY'));
+        $response = $client->request('GET', $path . '&pageSize=5&apiKey=' . env('NEWS_API_KEY'));
         $body = json_decode($response->getBody(), true);
 
         return $body;

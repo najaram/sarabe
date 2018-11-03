@@ -30,6 +30,10 @@ Vue.component(
     "dashboard-news",
     require("./components/Dashboard/DashboardNews.vue")
 );
+Vue.component(
+    "dashboard-news-list",
+    require("./components/Dashboard/DashboardNewsList.vue")
+);
 
 new Vue({
     el: "#admin",

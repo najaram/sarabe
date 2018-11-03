@@ -10,7 +10,7 @@
           <v-card 
             tile 
             flat>
-            <p>dashboard news!</p>
+            <dashboard-news-list :items="items"/>
           </v-card>
         </v-flex>
       </v-layout>
@@ -21,9 +21,21 @@
 <script>
 export default {
     name: "DashboardNews",
-    data () {
+    data() {
         return {
             items: []
+        };
+    },
+    mounted() {
+        this.getNews();
+    },
+    methods: {
+        getNews() {
+            axios
+                .get("/news-api?path=top-headlines?country=ph")
+                .then(response => {
+                    this.items = response.data.articles;
+                });
         }
     }
 };
