@@ -34,6 +34,10 @@ Vue.component(
     "dashboard-news-list",
     require("./components/Dashboard/DashboardNewsList.vue")
 );
+Vue.component(
+    "dashboard-user-list",
+    require("./components/Dashboard/DashboardUserList.vue")
+);
 
 new Vue({
     el: "#admin",

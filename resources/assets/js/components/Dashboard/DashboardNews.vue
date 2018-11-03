@@ -6,7 +6,9 @@
       <v-layout 
         row 
         wrap>
-        <v-flex x12>
+        <v-flex 
+          x12 
+          class="p-0">
           <v-card 
             tile 
             flat>

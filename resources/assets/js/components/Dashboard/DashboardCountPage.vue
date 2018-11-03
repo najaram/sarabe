@@ -10,6 +10,7 @@
           xs12 
           py-0>
           <v-card
+            :color="color"
             tile 
             flat>
             <v-layout 
@@ -23,13 +24,14 @@
               <v-flex
                 xs8
                 pl-4 
-                class="m-0 text-xs-left white--text headline">
-                <span>{{ title }}</span>
+                class="m-0 text-xs-left headline">
+                <h3>{{ title }}</h3>
+                <h2 class="m-0">{{ count }}</h2>
               </v-flex>
               <v-flex 
                 xs4
                 class="m-0 white--text title">
-                <v-icon :color="color">{{ icon }}</v-icon>
+                <v-icon large>{{ icon }}</v-icon>
               </v-flex>
             </v-layout>
           </v-card>
@@ -54,6 +56,10 @@ export default {
         title: {
             type: String,
             default: "activities"
+        },
+        count: {
+            type: String,
+            default: "activities"
         }
     }
 };
@@ -63,8 +69,12 @@ export default {
 .theme--light.v-icon {
     color: white;
 }
-span {
-    color: #333;
+h3 {
+    color: #ffffff;
     font-size: 16px;
+}
+h2 {
+  font-size: 1.8em;
+    color: #ffffff;
 }
 </style>
