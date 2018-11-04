@@ -161,6 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         \App\Providers\ComposerServiceProvider::class,
         \App\Components\News\NewsProvider::class,
+        \App\Components\Weather\DarkskyProvider::class,
     ],
 
     /*

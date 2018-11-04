@@ -18,6 +18,13 @@
       color="orange lighten-1"
       icon="settings_applications"
     />
+
+    <dashboard-count-page
+            :count="services"
+            title="Services"
+            color="orange lighten-1"
+            icon="settings_applications"
+    />
   </div>
 </template>
 

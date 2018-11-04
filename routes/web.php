@@ -43,6 +43,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::put('members/{member}/profile/{profile}', 'MemberProfilesController@update')->name('members.profiles.update');
     Route::delete('members/{member}/profile/{profile}', 'MemberProfilesController@destroy')->name('members.profiles.destroy');
 
+    // News...
     Route::get('news-api', 'NewsController@newsApi')->name('news.api');
 
     // Services...
@@ -53,4 +54,6 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::put('services/{service}', 'ServicesController@update')->name('services.update');
     Route::delete('services/{service}', 'ServicesController@destroy')->name('services.destroy');
 
+    // Weather...
+    Route::get('weather', 'WeatherController@forecast')->name('weather.index');
 });
