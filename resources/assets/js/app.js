@@ -10,8 +10,10 @@ window.Vue = require("vue");
 
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
+import VueSkycons from 'vue-skycons';
 
 Vue.use(Vuetify);
+Vue.use(VueSkycons, { color: 'black' });
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -37,6 +39,10 @@ Vue.component(
 Vue.component(
     "dashboard-user-list",
     require("./components/Dashboard/DashboardUserList.vue")
+);
+Vue.component(
+    "weather-page",
+    require("./components/Weather/WeatherPage")
 );
 
 new Vue({

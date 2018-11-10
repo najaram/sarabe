@@ -3,28 +3,23 @@
     <dashboard-count-page
       :count="activities"
       title="Activities"
-      color="blue lighten-1"
+      color="red"
       icon="fitness_center"
     />
     <dashboard-count-page
       :count="members"
       title="Members"
-      color="teal accent-3"
+      color="light-blue "
       icon="supervisor_account"
     />
     <dashboard-count-page
       :count="services"
       title="Services"
-      color="orange lighten-1"
+      color="orange"
       icon="settings_applications"
     />
 
-    <dashboard-count-page
-            :count="services"
-            title="Services"
-            color="orange lighten-1"
-            icon="settings_applications"
-    />
+    <weather-page />
   </div>
 </template>
 
